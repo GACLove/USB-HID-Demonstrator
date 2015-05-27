@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UsbHidDemonstrator", "UsbHidDemonstrator.vcxproj", "{8A55692C-5B73-4D3F-ACEC-EE995D28E999}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UsbHidDll", "..\UsbHidDll\UsbHidDll.vcxproj", "{8631FDA2-2FFD-4908-8E80-864DF416B073}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A55692C-5B73-4D3F-ACEC-EE995D28E999}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8A55692C-5B73-4D3F-ACEC-EE995D28E999}.Debug|Win32.Build.0 = Debug|Win32
+		{8A55692C-5B73-4D3F-ACEC-EE995D28E999}.Release|Win32.ActiveCfg = Release|Win32
+		{8A55692C-5B73-4D3F-ACEC-EE995D28E999}.Release|Win32.Build.0 = Release|Win32
+		{8631FDA2-2FFD-4908-8E80-864DF416B073}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8631FDA2-2FFD-4908-8E80-864DF416B073}.Debug|Win32.Build.0 = Debug|Win32
+		{8631FDA2-2FFD-4908-8E80-864DF416B073}.Release|Win32.ActiveCfg = Release|Win32
+		{8631FDA2-2FFD-4908-8E80-864DF416B073}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

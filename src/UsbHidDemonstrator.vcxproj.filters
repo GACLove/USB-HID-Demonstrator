@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{227135d9-319c-454a-b06b-3917516990fc}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{c5901aa3-f7c7-4cce-a023-c6f3b59cb2a8}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{14be2cdb-9c46-4be1-96e5-6cadc0fa6fd7}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DesrciptorView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FeatureView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicConfigView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HexEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hexeditctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IconButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ini.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UsbHidDemonstrator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UsbHidDemonstratorDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UsbHidDemonstrator.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DesrciptorView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FeatureView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicConfigView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HexEdit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hexeditctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IconButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ini.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UsbHidDemonstrator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UsbHidDemonstratorDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BULLSEYE.ICO">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="capabilities.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="DESC.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="famous-066.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GraphicConfig.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GraphicView.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="gray.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="HID Capabilities.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="LedOff.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="LedOn.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MISC14.ICO">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MISC15.ICO">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="r1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Transfere.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="USB_Blue.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\UsbHidDemonstrator.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\UsbHidDemonstrator.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
