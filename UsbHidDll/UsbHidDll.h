@@ -28,6 +28,7 @@ enum USBHIDTYPE
     T_Feature,
 };
 
+//获取DevicePath（利用文件查找方式返回多个设备path）
 
 // 打开设备
 USBHIDDLL_API USBHANDLE USBHIDCreateUsbHid(char* devicePath);
