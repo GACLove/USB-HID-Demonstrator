@@ -43,7 +43,7 @@ USBHIDDLL_API int USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len);
 USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len);
 
 // 获取设备一些信息
-USBHIDDLL_API void USBHIDGetDeviceCapabilitiess(USBHANDLE handle, HIDP_CAPS* caps);
+USBHIDDLL_API void USBHIDGetDeviceCapabilities(USBHANDLE handle, HIDP_CAPS* caps);
 
 #ifdef __cplusplus
 }

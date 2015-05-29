@@ -8,7 +8,16 @@ USBHIDTYPE globalType = T_Report;
 // 打开设备
 USBHIDDLL_API USBHANDLE USBHIDCreateUsbHid(char* devicePath)
 {
-    return NULL;
+    USBHANDLE handle = CreateFile (
+        (LPCTSTR)devicePath,
+        GENERIC_READ | GENERIC_WRITE,
+        FILE_SHARE_READ | FILE_SHARE_WRITE,
+        NULL,                                 //&SecurityAttributes,  //no SECURITY_ATTRIBUTES structure
+        OPEN_EXISTING,                        //No special create flags
+        FILE_FLAG_OVERLAPPED,                 // No special attributes
+        NULL);                                // No template file
+
+    return handle;
 }
 
 // 配置设备(与写数据相关)
@@ -41,7 +50,7 @@ USBHIDDLL_API int USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len)
 // 写设备
 USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
 {
-    DWORD NumberOfBytesWriten;
+    DWORD numberOfBytesWriten;
     OVERLAPPED	HIDOverlapped;
 
     if (handle != INVALID_HANDLE_VALUE)
@@ -52,8 +61,8 @@ USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
         {
             HidD_SetFeature 
                 (handle,
-                byte,
-               len); 
+                 byte,
+                 len); 
         }
         else
         {
@@ -61,15 +70,51 @@ USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
                 (handle, 
                 &byte, 
                 len, 
-                &NumberOfBytesWriten,
+                &numberOfBytesWriten,
                 (LPOVERLAPPED) &HIDOverlapped);
         }
     }
-    return NumberOfBytesWriten;
+    return numberOfBytesWriten;
 }
 
 // 获取设备一些信息
-USBHIDDLL_API void USBHIDGetDeviceCapabilitiess(USBHANDLE handle, HIDP_CAPS* caps)
+USBHIDDLL_API void USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTES attributes, PHIDP_CAPS caps)
 {
+    if (handle != INVALID_HANDLE_VALUE)
+    {
+        HidD_GetAttributes(handle, attributes);
 
+        //Get the Capabilities structure for the device.
+
+        PHIDP_PREPARSED_DATA	PreparsedData;
+
+        /*
+        API function: HidD_GetPreparsedData
+        Returns: a pointer to a buffer containing the information about the device's capabilities.
+        Requires: A handle returned by CreateFile.
+        There's no need to access the buffer directly,
+        but HidP_GetCaps and other API functions require a pointer to the buffer.
+        */
+
+        HidD_GetPreparsedData (handle, &PreparsedData);
+        //DisplayLastError("HidD_GetPreparsedData: ");
+
+        /*
+        API function: HidP_GetCaps
+        Learn the device's capabilities.
+        For standard devices such as joysticks, you can find out the specific
+        capabilities of the device.
+        For a custom device, the software will probably know what the device is capable of,
+        and the call only verifies the information.
+        Requires: the pointer to the buffer returned by HidD_GetPreparsedData.
+        Returns: a Capabilities structure containing the information.
+        */
+
+        HidP_GetCaps (PreparsedData, caps);
+
+        //No need for PreparsedData any more, so free the memory it's using.
+        HidD_FreePreparsedData(PreparsedData);
+        //DisplayLastError("HidD_FreePreparsedData: ") ;
+        
+    }
 }
