@@ -1,0 +1,62 @@
+﻿生成启动时间为 2015/5/30 13:34:41。
+     1>项目“F:\Repositories\USB HID Demonstrator\src\UsbHidDemonstrator.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“.\Debug\UsbHidDemonstrator.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc100.pdb" /Gd /TP /analyze- /errorReport:prompt UsbHidDemonstratorDlg.cpp
+         UsbHidDemonstratorDlg.cpp
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(489): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(608): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(658): warning C4101: “i”: 未引用的局部变量
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(658): warning C4101: “j”: 未引用的局部变量
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(777): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(780): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(823): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(824): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(826): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(827): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(828): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(829): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(830): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(831): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(832): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(964): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdlib.h(843) : 参见“_sleep”的声明
+     1>f:\repositories\usb hid demonstrator\src\usbhiddemonstratordlg.cpp(1001): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdlib.h(843) : 参见“_sleep”的声明
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/UsbHidDemonstrator.exe" /INCREMENTAL /NOLOGO LIB/setupapi.lib LIB/hid.lib /MANIFEST /ManifestFile:".\Debug\UsbHidDemonstrator.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:".\Debug/UsbHidDemonstrator.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\UsbHidDemonstrator.lib" /MACHINE:X86 .\Debug\UsbHidDemonstrator.res
+         .\Debug\UsbHidDemonstrator.exe.embed.manifest.res
+         .\Debug/DesrciptorView.obj
+         .\Debug/FeatureView.obj
+         .\Debug/GraphicConfigView.obj
+         .\Debug/GraphicView.obj
+         .\Debug/HexEdit.obj
+         .\Debug/hexeditctrl.obj
+         .\Debug/IconButton.obj
+         .\Debug/Ini.obj
+         .\Debug/ReportView.obj
+         .\Debug/StdAfx.obj
+         .\Debug/UsbHidDemonstrator.obj
+         .\Debug/UsbHidDemonstratorDlg.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:".\Debug\UsbHidDemonstrator.exe.embed.manifest" /manifest .\Debug\UsbHidDemonstrator.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         UsbHidDemonstrator.vcxproj -> F:\Repositories\USB HID Demonstrator\src\.\Debug\UsbHidDemonstrator.exe
+       FinalizeBuildStatus:
+         正在删除文件“.\Debug\UsbHidDemonstrator.unsuccessfulbuild”。
+         正在对“.\Debug\UsbHidDemonstrator.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“F:\Repositories\USB HID Demonstrator\src\UsbHidDemonstrator.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.37

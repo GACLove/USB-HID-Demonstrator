@@ -10,7 +10,7 @@ char GlobalUSBHIDDevicePath[256];
 char GlobalUSBHIDDeviceName[256];
 
 // 用于查找HID设备
-USBHIDDLL_API bool __stdcall FindUSBHIDDevice()
+USBHIDDLL_API bool __stdcall USBHIDFindUSBHIDDevice()
 {
     GUID Guid;
     HidD_GetHidGuid(&Guid);
@@ -72,10 +72,10 @@ USBHIDDLL_API char* __stdcall USBHIDGetDeviceName()
 }
 
 // 打开设备
-USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid(char* devicePath)
+USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid()
 {
     USBHANDLE handle = CreateFile (
-        (LPCTSTR)devicePath,
+        (LPCTSTR)GlobalUSBHIDDevicePath,
         GENERIC_READ | GENERIC_WRITE,
         FILE_SHARE_READ | FILE_SHARE_WRITE,
         NULL,                                 //&SecurityAttributes,  //no SECURITY_ATTRIBUTES structure
@@ -83,6 +83,10 @@ USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid(char* devicePath)
         FILE_FLAG_OVERLAPPED,                 // No special attributes
         NULL);                                // No template file
 
+    if (handle == INVALID_HANDLE_VALUE)
+    {
+        return NULL;
+    }
     return handle;
 }
 

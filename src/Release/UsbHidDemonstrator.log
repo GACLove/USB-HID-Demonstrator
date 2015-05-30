@@ -1,0 +1,224 @@
+﻿生成启动时间为 2015/5/30 16:29:21。
+     1>项目“F:\Repositories\USB HID Demonstrator\src\UsbHidDemonstrator.vcxproj”在节点 3 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“.\Release\UsbHidDemonstrator.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _AFXDLL /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp".\Release/UsbHidDemonstrator.pch" /Fo".\Release/" /Fd".\Release/vc100.pdb" /FR".\Release\\" /Gd /TP /analyze- /errorReport:prompt StdAfx.cpp
+         StdAfx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _AFXDLL /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Release/" /Fd".\Release/vc100.pdb" /FR".\Release\\" /Gd /TP /analyze- /errorReport:prompt DesrciptorView.cpp FeatureView.cpp GraphicConfigView.cpp GraphicView.cpp HexEdit.cpp hexeditctrl.cpp IconButton.cpp Ini.cpp ReportView.cpp UsbHidDemonstrator.cpp UsbHidDemonstratorDlg.cpp
+         DesrciptorView.cpp
+         FeatureView.cpp
+         GraphicConfigView.cpp
+     1>GraphicConfigView.cpp(185): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(209): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(233): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(257): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(281): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(305): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(329): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(353): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(377): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(401): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(425): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(449): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(472): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(493): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(510): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(527): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(544): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(561): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(578): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(595): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(612): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(629): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(646): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(663): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(680): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(697): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(714): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicConfigView.cpp(730): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+         GraphicView.cpp
+     1>GraphicView.cpp(182): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(297): warning C4244: “=”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>GraphicView.cpp(320): warning C4244: “=”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>GraphicView.cpp(343): warning C4244: “=”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>GraphicView.cpp(373): warning C4244: “=”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>GraphicView.cpp(394): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(418): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(442): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(466): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(490): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(514): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(538): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(562): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(586): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(610): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(634): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(658): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(678): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(700): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>GraphicView.cpp(722): warning C4244: “=”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>GraphicView.cpp(741): warning C4244: “=”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+         HexEdit.cpp
+     1>HexEdit.cpp(452): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>HexEdit.cpp(454): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>HexEdit.cpp(462): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>HexEdit.cpp(477): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>HexEdit.cpp(479): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+     1>HexEdit.cpp(486): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(325) : 参见“sscanf”的声明
+         hexeditctrl.cpp
+     1>hexeditctrl.cpp(188): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+         IconButton.cpp
+         Ini.cpp
+     1>Ini.cpp(86): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(120): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(156): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(298): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(301): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(397): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(419): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(434): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(735): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : 参见“strcpy”的声明
+     1>Ini.cpp(778): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(803): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(824): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(895): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+     1>Ini.cpp(970): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(985): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(989): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(993): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
+     1>Ini.cpp(1046): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : 参见“strcpy”的声明
+     1>Ini.cpp(1057): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : 参见“strncpy”的声明
+         ReportView.cpp
+     1>ReportView.cpp(80): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>ReportView.cpp(81): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>ReportView.cpp(93): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>ReportView.cpp(114): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>ReportView.cpp(132): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>ReportView.cpp(140): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+         UsbHidDemonstrator.cpp
+     1>UsbHidDemonstrator.cpp(64): warning C4996: 'CWinApp::SetDialogBkColor': CWinApp::SetDialogBkColor is no longer supported. Instead, handle WM_CTLCOLORDLG in your dialog
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxwin.h(5329) : 参见“CWinApp::SetDialogBkColor”的声明
+     1>UsbHidDemonstrator.cpp(73): warning C4996: 'CWinApp::Enable3dControls': CWinApp::Enable3dControls is no longer needed. You should remove this call.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxwin.h(5344) : 参见“CWinApp::Enable3dControls”的声明
+         UsbHidDemonstratorDlg.cpp
+     1>UsbHidDemonstratorDlg.cpp(489): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>UsbHidDemonstratorDlg.cpp(608): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(791) : 参见“_splitpath”的声明
+     1>UsbHidDemonstratorDlg.cpp(658): warning C4101: “i”: 未引用的局部变量
+     1>UsbHidDemonstratorDlg.cpp(658): warning C4101: “j”: 未引用的局部变量
+     1>UsbHidDemonstratorDlg.cpp(777): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(780): warning C4244: “初始化”: 从“unsigned long”转换到“WORD”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(823): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(824): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(826): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(827): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(828): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(829): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(830): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(831): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(832): warning C4244: “初始化”: 从“unsigned long”转换到“BYTE”，可能丢失数据
+     1>UsbHidDemonstratorDlg.cpp(964): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(843) : 参见“_sleep”的声明
+     1>UsbHidDemonstratorDlg.cpp(1001): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(843) : 参见“_sleep”的声明
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _VC80_UPGRADE=0x0600 /D _AFXDLL /l"0x0409" /nologo /fo".\Release\UsbHidDemonstrator.res" UsbHidDemonstrator.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Release/UsbHidDemonstrator.exe" /INCREMENTAL:NO /NOLOGO LIB/setupapi.lib LIB/hid.lib /MANIFEST /ManifestFile:".\Release\UsbHidDemonstrator.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:".\Release/UsbHidDemonstrator.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Release\UsbHidDemonstrator.lib" /MACHINE:X86 .\Release\UsbHidDemonstrator.res
+         .\Release/DesrciptorView.obj
+         .\Release/FeatureView.obj
+         .\Release/GraphicConfigView.obj
+         .\Release/GraphicView.obj
+         .\Release/HexEdit.obj
+         .\Release/hexeditctrl.obj
+         .\Release/IconButton.obj
+         .\Release/Ini.obj
+         .\Release/ReportView.obj
+         .\Release/StdAfx.obj
+         .\Release/UsbHidDemonstrator.obj
+         .\Release/UsbHidDemonstratorDlg.obj
+         UsbHidDemonstrator.vcxproj -> F:\Repositories\USB HID Demonstrator\src\.\Release\UsbHidDemonstrator.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:".\Release/UsbHidDemonstrator.exe;#1" /manifest .\Release\UsbHidDemonstrator.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o".\Release/UsbHidDemonstrator.bsc" .\Release\DesrciptorView.sbr .\Release\FeatureView.sbr .\Release\GraphicConfigView.sbr .\Release\GraphicView.sbr .\Release\HexEdit.sbr .\Release\hexeditctrl.sbr .\Release\IconButton.sbr .\Release\Ini.sbr .\Release\ReportView.sbr .\Release\StdAfx.sbr .\Release\UsbHidDemonstrator.sbr .\Release\UsbHidDemonstratorDlg.sbr
+       FinalizeBuildStatus:
+         正在删除文件“.\Release\UsbHidDemonstrator.unsuccessfulbuild”。
+         正在对“.\Release\UsbHidDemonstrator.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“F:\Repositories\USB HID Demonstrator\src\UsbHidDemonstrator.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:12.72

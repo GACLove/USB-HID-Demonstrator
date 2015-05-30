@@ -31,7 +31,7 @@ enum USBHIDTYPE
 /*                     用于查找设备和识别设备的API                           */
 /************************************************************************/
 //查找设备 如果找到则返回true，否则返回false
-USBHIDDLL_API bool __stdcall FindUSBHIDDevice();
+USBHIDDLL_API bool __stdcall USBHIDFindUSBHIDDevice();
 
 //获取DevicePath
 USBHIDDLL_API char* __stdcall USBHIDGetDevicePath();
@@ -50,7 +50,7 @@ USBHIDDLL_API void __stdcall USBHIDSetType(USBHIDTYPE type);
 USBHIDDLL_API void __stdcall  USBHIDResetConfig();
 
 // 获取设备一些信息
-USBHIDDLL_API void __stdcall USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTES attributes, HIDP_CAPS* caps);
+USBHIDDLL_API void __stdcall USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTES attributes, PHIDP_CAPS caps);
 
 
 /************************************************************************/
@@ -58,7 +58,7 @@ USBHIDDLL_API void __stdcall USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD
 /************************************************************************/
 
 // 打开设备
-USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid(char* devicePath);
+USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid();
 
 // 读设备
 USBHIDDLL_API int __stdcall USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len);
