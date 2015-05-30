@@ -33,11 +33,11 @@ enum USBHIDTYPE
 //查找设备 如果找到则返回true，否则返回false
 USBHIDDLL_API bool __stdcall FindUSBHIDDevice();
 
-
 //获取DevicePath
 USBHIDDLL_API char* __stdcall USBHIDGetDevicePath();
 
-
+//获取设备名称
+USBHIDDLL_API char* __stdcall USBHIDGetDeviceName();
 
 /************************************************************************/
 /*                      获取和配置设备信息                                  */

@@ -7,6 +7,7 @@
 USBHIDTYPE GlobalType = T_Report;
 
 char GlobalUSBHIDDevicePath[256];
+char GlobalUSBHIDDeviceName[256];
 
 // 用于查找HID设备
 USBHIDDLL_API bool __stdcall FindUSBHIDDevice()
@@ -37,8 +38,16 @@ USBHIDDLL_API bool __stdcall FindUSBHIDDevice()
                 // 查找特定设备 查到后则返回。
                 if(strstr(detail->DevicePath, "vid_0483") != NULL)
                 {
-                    memset(GlobalUSBHIDDevicePath, '\0', sizeof(GlobalUSBHIDDevicePath));
+                    memset(GlobalUSBHIDDevicePath, '\0', sizeof(GlobalUSBHIDDevicePath));                 
                    memcpy(GlobalUSBHIDDevicePath, detail->DevicePath, strlen(detail->DevicePath));
+
+                   if (!SetupDiGetDeviceRegistryProperty(info, &did, SPDRP_DEVICEDESC, NULL, 
+                       (PBYTE)GlobalUSBHIDDeviceName, sizeof(GlobalUSBHIDDeviceName), NULL))
+                   {
+                       memset(GlobalUSBHIDDeviceName, '\0', sizeof(GlobalUSBHIDDeviceName));
+                       char* hint = "(Unnamed HID device)";
+                       memcpy(GlobalUSBHIDDeviceName,  hint, strlen(hint));
+                   }
 
                    delete[] (PBYTE)detail;
                    SetupDiDestroyDeviceInfoList(info);    
@@ -55,6 +64,11 @@ USBHIDDLL_API bool __stdcall FindUSBHIDDevice()
 USBHIDDLL_API char* __stdcall USBHIDGetDevicePath()
 {
     return GlobalUSBHIDDevicePath;
+}
+
+USBHIDDLL_API char* __stdcall USBHIDGetDeviceName()
+{
+    return GlobalUSBHIDDeviceName;
 }
 
 // 打开设备
