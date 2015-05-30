@@ -27,23 +27,47 @@ enum USBHIDTYPE
     T_Report,
     T_Feature,
 };
+/************************************************************************/
+/*                     用于查找设备和识别设备的API                           */
+/************************************************************************/
+//查找设备 如果找到则返回true，否则返回false
+USBHIDDLL_API bool __stdcall FindUSBHIDDevice();
 
-//获取DevicePath（利用文件查找方式返回多个设备path）
 
-// 打开设备
-USBHIDDLL_API USBHANDLE USBHIDCreateUsbHid(char* devicePath);
+//获取DevicePath
+USBHIDDLL_API char* __stdcall USBHIDGetDevicePath();
+
+
+
+/************************************************************************/
+/*                      获取和配置设备信息                                  */
+/************************************************************************/
 
 // 配置设备(与写数据相关)
-USBHIDDLL_API void USBHIDSetType(USBHIDTYPE type);
+USBHIDDLL_API void __stdcall USBHIDSetType(USBHIDTYPE type);
 
-// 读设备
-USBHIDDLL_API int USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len);
-
-// 写设备
-USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len);
+// 重置设备一些配置信息
+USBHIDDLL_API void __stdcall  USBHIDResetConfig();
 
 // 获取设备一些信息
-USBHIDDLL_API void USBHIDGetDeviceCapabilities(USBHANDLE handle, HIDP_CAPS* caps);
+USBHIDDLL_API void __stdcall USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTES attributes, HIDP_CAPS* caps);
+
+
+/************************************************************************/
+/*             打开，关闭和读写操作                                         */
+/************************************************************************/
+
+// 打开设备
+USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid(char* devicePath);
+
+// 读设备
+USBHIDDLL_API int __stdcall USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len);
+
+// 写设备
+USBHIDDLL_API int __stdcall USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len);
+
+// 关闭设备
+USBHIDDLL_API void __stdcall USBHIDCloseHandle(USBHANDLE handle);
 
 #ifdef __cplusplus
 }

@@ -2,11 +2,63 @@
 //
 #include "stdafx.h"
 #include "UsbHidDll.h"
+#include "SETUPAPI.H"
+// 控制当前的模式
+USBHIDTYPE GlobalType = T_Report;
 
-USBHIDTYPE globalType = T_Report;
-    
+char GlobalUSBHIDDevicePath[256];
+
+// 用于查找HID设备
+USBHIDDLL_API bool __stdcall FindUSBHIDDevice()
+{
+    GUID Guid;
+    HidD_GetHidGuid(&Guid);
+
+    void* info;
+    info=SetupDiGetClassDevs(&Guid, NULL, NULL, DIGCF_PRESENT | DIGCF_INTERFACEDEVICE);
+    if (info!=INVALID_HANDLE_VALUE) 
+    {
+        DWORD devIndex;
+        SP_INTERFACE_DEVICE_DATA ifData;
+        ifData.cbSize=sizeof(ifData);
+
+        for (devIndex=0;SetupDiEnumDeviceInterfaces(info, NULL, &Guid, devIndex, &ifData);++devIndex)
+        {
+            DWORD needed;
+
+            SetupDiGetDeviceInterfaceDetail(info, &ifData, NULL, 0, &needed, NULL);
+
+            PSP_INTERFACE_DEVICE_DETAIL_DATA detail=(PSP_INTERFACE_DEVICE_DETAIL_DATA)new BYTE[needed];
+            detail->cbSize=sizeof(SP_INTERFACE_DEVICE_DETAIL_DATA);
+            SP_DEVINFO_DATA did={sizeof(SP_DEVINFO_DATA)};
+
+            if (SetupDiGetDeviceInterfaceDetail(info, &ifData, detail, needed, NULL, &did))
+            {
+                // 查找特定设备 查到后则返回。
+                if(strstr(detail->DevicePath, "vid_0483") != NULL)
+                {
+                    memset(GlobalUSBHIDDevicePath, '\0', sizeof(GlobalUSBHIDDevicePath));
+                   memcpy(GlobalUSBHIDDevicePath, detail->DevicePath, strlen(detail->DevicePath));
+
+                   delete[] (PBYTE)detail;
+                   SetupDiDestroyDeviceInfoList(info);    
+                   return true;
+                }
+            }
+            delete[] (PBYTE)detail; 
+        }
+        SetupDiDestroyDeviceInfoList(info);
+    }
+    return false;
+}
+
+USBHIDDLL_API char* __stdcall USBHIDGetDevicePath()
+{
+    return GlobalUSBHIDDevicePath;
+}
+
 // 打开设备
-USBHIDDLL_API USBHANDLE USBHIDCreateUsbHid(char* devicePath)
+USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid(char* devicePath)
 {
     USBHANDLE handle = CreateFile (
         (LPCTSTR)devicePath,
@@ -21,13 +73,18 @@ USBHIDDLL_API USBHANDLE USBHIDCreateUsbHid(char* devicePath)
 }
 
 // 配置设备(与写数据相关)
-USBHIDDLL_API void USBHIDSetType(USBHIDTYPE type)
+USBHIDDLL_API void __stdcall USBHIDSetType(USBHIDTYPE type)
 {
-    globalType = type;
+    GlobalType = type;
+}
+
+USBHIDDLL_API void __stdcall USBHIDResetConfig()
+{
+    GlobalType = T_Report;
 }
 
 // 读设备
-USBHIDDLL_API int USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len)
+USBHIDDLL_API int __stdcall USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len)
 {
     DWORD numberOfByteRead = 0;
     OVERLAPPED	HIDOverlapped;
@@ -47,8 +104,7 @@ USBHIDDLL_API int USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len)
     return numberOfByteRead;
 }
 
-// 写设备
-USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
+USBHIDDLL_API int __stdcall USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
 {
     DWORD numberOfBytesWriten;
     OVERLAPPED	HIDOverlapped;
@@ -57,7 +113,7 @@ USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
     {
         CancelIo(handle);
 
-        if( globalType == T_Feature )
+        if( GlobalType == T_Feature )
         {
             HidD_SetFeature 
                 (handle,
@@ -77,8 +133,18 @@ USBHIDDLL_API int USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
     return numberOfBytesWriten;
 }
 
-// 获取设备一些信息
-USBHIDDLL_API void USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTES attributes, PHIDP_CAPS caps)
+USBHIDDLL_API void __stdcall USBHIDCloseHandle(USBHANDLE handle)
+{
+    if (handle != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(handle);
+        handle = INVALID_HANDLE_VALUE;
+        memset(GlobalUSBHIDDevicePath, '\0', sizeof(GlobalUSBHIDDevicePath));
+    }
+}
+
+// 获取设备一些能力信息
+USBHIDDLL_API void __stdcall USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTES attributes, PHIDP_CAPS caps)
 {
     if (handle != INVALID_HANDLE_VALUE)
     {
@@ -115,6 +181,5 @@ USBHIDDLL_API void USBHIDGetDeviceCapabilities(USBHANDLE handle, PHIDD_ATTRIBUTE
         //No need for PreparsedData any more, so free the memory it's using.
         HidD_FreePreparsedData(PreparsedData);
         //DisplayLastError("HidD_FreePreparsedData: ") ;
-        
     }
 }
