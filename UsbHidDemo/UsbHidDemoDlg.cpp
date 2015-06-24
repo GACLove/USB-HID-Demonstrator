@@ -62,6 +62,8 @@ void CUsbHidDemoDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_RADIO1, m_wndReport);
     DDX_Control(pDX, IDC_STATIC_DEVICE, m_wndDeviceName);
     DDX_Control(pDX, IDC_STATIC_READ, m_wndRead);
+    DDX_Control(pDX, IDC_EDIT_FILEPATH, m_wndFilePath);
+    DDX_Control(pDX, IDC_STATIC_STATUS, m_wndFileStatus);
 }
 
 BEGIN_MESSAGE_MAP(CUsbHidDemoDlg, CDialogEx)
@@ -74,6 +76,8 @@ BEGIN_MESSAGE_MAP(CUsbHidDemoDlg, CDialogEx)
     ON_BN_CLICKED(IDC_BUTTON4, &CUsbHidDemoDlg::OnBnClickedOpen)
     ON_BN_CLICKED(IDC_RADIO1, &CUsbHidDemoDlg::OnBnClickedSetReport)
     ON_BN_CLICKED(IDC_RADIO2, &CUsbHidDemoDlg::OnBnClickedSetFeature)
+    ON_BN_CLICKED(IDC_BUTTON_OPENFILE, &CUsbHidDemoDlg::OnBnClickedButtonOpenfile)
+    ON_BN_CLICKED(IDC_BUTTON_WRITEDATA, &CUsbHidDemoDlg::OnBnClickedButtonWritedata)
 END_MESSAGE_MAP()
 
 
@@ -117,6 +121,8 @@ BOOL CUsbHidDemoDlg::OnInitDialog()
         m_wndDeviceName.SetWindowText(deviceName);
     }
     
+    fileData = NULL;
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -177,6 +183,7 @@ void CUsbHidDemoDlg::OnBnClickedWriteByte()
     m_wndWriteEdit.GetWindowTextA(tmp);
     if (tmp.IsEmpty()) return ; // 提示输入内容
     BYTE* pBuffer = (BYTE*)tmp.GetBuffer(tmp.GetLength());
+
     int writtedNum = USBHIDWriteByte(handle, pBuffer, tmp.GetLength());
 }
 
@@ -202,9 +209,14 @@ void CUsbHidDemoDlg::OnBnClickedGetCaps()
 
 void CUsbHidDemoDlg::OnBnClickedOpen()
 {
-   if (NULL == USBHIDCreateUsbHid())
+    handle = USBHIDCreateUsbHid();
+   if (NULL == handle)
    {
-       MessageBox("打开USB设备失败,请确认设备是否连接！");
+       MessageBox("打开USB设备失败,请确认设备是否连接.");
+   }
+   else
+   {
+        MessageBox("打开成功，请继续");
    }
 }
 
@@ -220,4 +232,68 @@ void CUsbHidDemoDlg::OnBnClickedSetFeature()
 {
     // TODO: 在此添加控件通知处理程序代码
     USBHIDSetType(T_Feature);
+}
+
+
+void CUsbHidDemoDlg::OnBnClickedButtonOpenfile()
+{
+   CString filePathName;
+   CFileDialog dlg(TRUE, 
+       NULL, 
+       NULL,
+       OFN_HIDEREADONLY |  OFN_OVERWRITEPROMPT,
+       _T("bin File (*.bin)|*.bin|All Files(*.*)|*.*||"),
+       NULL);
+
+   if (dlg.DoModal() == IDOK)
+   {
+       filePathName = dlg.GetPathName();
+       m_wndFilePath.SetWindowText(filePathName);
+       FILE* fp = fopen(filePathName.GetBuffer(0), "rb+");
+
+       if (fp == NULL)
+       {
+           MessageBox("Open file error.");
+           return ;
+       }
+
+       fseek(fp, 0, SEEK_END);
+
+       // 获取文件大小
+       int len = ftell(fp);
+
+       // 删除上一次的空间
+       if (fileData != NULL)
+       {
+           delete [] fileData;
+       }
+       // 分配空间大小
+       fileData = new BYTE[len];
+
+       // 读取数据
+       fseek(fp, 0, SEEK_SET);
+       fileLen = 0;
+       fileLen = fread(fileData, 1, len, fp);
+
+       CString fstatus;
+       // 显示大小
+       fstatus.Format("文件大小:%d",fileLen);
+       m_wndFileStatus.SetWindowText(fstatus);
+
+       fclose(fp);
+       fp = NULL;
+   }
+}
+
+
+void CUsbHidDemoDlg::OnBnClickedButtonWritedata()
+{
+   if (handle)
+   {
+       USBHIDWriteByte(handle, fileData, fileLen);
+   }
+   else
+   {
+        m_wndFileStatus.SetWindowText(_T("please check usb device is connected."));        
+   }
 }

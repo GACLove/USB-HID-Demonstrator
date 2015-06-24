@@ -20,6 +20,8 @@ public:
 
     USBHANDLE handle;
 
+    BYTE* fileData;
+    int fileLen;
 // й╣ож
 protected:
 	HICON m_hIcon;
@@ -41,4 +43,8 @@ public:
     afx_msg void OnBnClickedOpen();
     afx_msg void OnBnClickedSetReport();
     afx_msg void OnBnClickedSetFeature();
+    CEdit m_wndFilePath;
+    afx_msg void OnBnClickedButtonOpenfile();
+    CStatic m_wndFileStatus;
+    afx_msg void OnBnClickedButtonWritedata();
 };
