@@ -299,7 +299,10 @@ BOOL CUsbHidDemonstratorDlg::OnInitDialog()
 	filter.dbcc_classguid=Guid;
 	RegisterDeviceNotification(m_hWnd, (PVOID)&filter, DEVICE_NOTIFY_WINDOW_HANDLE);
 	
-	m_ReportView_frm.Create(IDD_REPORT_VIEW,this); 
+    RegisterDeviceNotification(m_hWnd, (PVOID)&filter, DEVICE_NOTIFY_SERVICE_HANDLE);
+
+	
+    m_ReportView_frm.Create(IDD_REPORT_VIEW,this); 
     m_GraphicView_frm.Create(IDD_GRAPHIC_VIEW,this);
     m_FeatureView_frm.Create(IDD_FEATURE_VIEW,this);
     m_DesrciptorView_frm.Create(IDD_DESCRIPTOR_VIEW,this);

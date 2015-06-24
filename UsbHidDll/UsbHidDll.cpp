@@ -9,6 +9,8 @@ USBHIDTYPE GlobalType = T_Report;
 char GlobalUSBHIDDevicePath[256];
 char GlobalUSBHIDDeviceName[256];
 
+OVERLAPPED	HIDOverlapped;
+
 // 用于查找HID设备
 USBHIDDLL_API bool __stdcall USBHIDFindUSBHIDDevice()
 {
@@ -105,7 +107,6 @@ USBHIDDLL_API void __stdcall USBHIDResetConfig()
 USBHIDDLL_API int __stdcall USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len)
 {
     DWORD numberOfByteRead = 0;
-    OVERLAPPED	HIDOverlapped;
 
     if (handle != INVALID_HANDLE_VALUE)
     {
@@ -125,7 +126,6 @@ USBHIDDLL_API int __stdcall USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len
 USBHIDDLL_API int __stdcall USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
 {
     DWORD numberOfBytesWriten;
-    OVERLAPPED	HIDOverlapped;
 
     if (handle != INVALID_HANDLE_VALUE)
     {
