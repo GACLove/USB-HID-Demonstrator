@@ -78,6 +78,7 @@ BEGIN_MESSAGE_MAP(CUsbHidDemoDlg, CDialogEx)
     ON_BN_CLICKED(IDC_RADIO2, &CUsbHidDemoDlg::OnBnClickedSetFeature)
     ON_BN_CLICKED(IDC_BUTTON_OPENFILE, &CUsbHidDemoDlg::OnBnClickedButtonOpenfile)
     ON_BN_CLICKED(IDC_BUTTON_WRITEDATA, &CUsbHidDemoDlg::OnBnClickedButtonWritedata)
+    ON_BN_CLICKED(IDC_BUTTON_TESTREAD, &CUsbHidDemoDlg::OnBnClickedButtonTestread)
 END_MESSAGE_MAP()
 
 
@@ -182,9 +183,33 @@ void CUsbHidDemoDlg::OnBnClickedWriteByte()
     CString tmp;
     m_wndWriteEdit.GetWindowTextA(tmp);
     if (tmp.IsEmpty()) return ; // 提示输入内容
-    BYTE* pBuffer = (BYTE*)tmp.GetBuffer(tmp.GetLength());
+    int len = tmp.GetLength();
 
-    int writtedNum = USBHIDWriteByte(handle, pBuffer, tmp.GetLength());
+    BYTE* pBuffer = (BYTE*)tmp.GetBuffer(len);
+    BYTE* buffer = new BYTE[len];
+
+    // 转换到16进制
+    int index = 0;
+    for (int i = 0; i < tmp.GetLength();i++)
+    {
+        if (pBuffer[i] >= '0' && pBuffer[i] <='9')
+        {
+            buffer[index] = pBuffer[i] - '0';
+        }
+        else if (pBuffer[i] >= 'a' && pBuffer[i] <='f')
+        {
+            buffer[index] = pBuffer[i] - 'a' + 10;
+        }
+        else
+        {
+            continue;
+        }
+        index++;
+    }
+
+    int writtedNum = USBHIDWriteByte(handle, buffer, index);
+
+    delete [] buffer;
 }
 
 
@@ -294,6 +319,27 @@ void CUsbHidDemoDlg::OnBnClickedButtonWritedata()
    }
    else
    {
-        m_wndFileStatus.SetWindowText(_T("please check usb device is connected."));        
+        m_wndFileStatus.SetWindowText(_T("{Please check usb device is connected."));        
+   }
+}
+
+
+void CUsbHidDemoDlg::OnBnClickedButtonTestread()
+{
+   if (handle)
+   {
+      // BYTE tmpData[10];
+       BYTE tmpData[10] = {1, 2, 3, 4, 5};
+       int len = USBHIDReadByte(handle, tmpData, 10);
+       char tmp[10];
+      
+       CString text;
+       for (int i = 0; i < len; i++)
+       {
+            memset(tmp, '\0', 10);
+           sprintf(tmp, "0x%02x ", tmpData[i]);
+           text += tmp;
+       }
+       m_wndRead.SetWindowText(text);
    }
 }

@@ -35,10 +35,10 @@ protected:
 public:
     afx_msg void OnBnClickedWriteByte();
     afx_msg void OnBnClickedReFresh();
-    CEdit m_wndWriteEdit;
+    CEdit m_wndWriteEdit;                                      // 输入
     CButton m_wndReport;
     CStatic m_wndDeviceName;
-    CStatic m_wndRead;
+    CStatic m_wndRead;                                         // 读取到数据
     afx_msg void OnBnClickedGetCaps();
     afx_msg void OnBnClickedOpen();
     afx_msg void OnBnClickedSetReport();
@@ -47,4 +47,5 @@ public:
     afx_msg void OnBnClickedButtonOpenfile();
     CStatic m_wndFileStatus;
     afx_msg void OnBnClickedButtonWritedata();
+    afx_msg void OnBnClickedButtonTestread();
 };
