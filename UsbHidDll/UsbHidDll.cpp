@@ -82,7 +82,7 @@ USBHIDDLL_API USBHANDLE __stdcall USBHIDCreateUsbHid()
         FILE_SHARE_READ | FILE_SHARE_WRITE,
         NULL,                                 //&SecurityAttributes,  //no SECURITY_ATTRIBUTES structure
         OPEN_EXISTING,                        //No special create flags
-        FILE_FLAG_OVERLAPPED,                 // No special attributes
+		FILE_FLAG_OVERLAPPED,                 // No special attributes
         NULL);                                // No template file
 
     if (handle == INVALID_HANDLE_VALUE)
@@ -110,26 +110,32 @@ USBHIDDLL_API int __stdcall USBHIDReadByte(USBHANDLE handle, BYTE* byte, int len
 
     if (handle != INVALID_HANDLE_VALUE)
     {
-        CancelIo(handle);
+		CancelIo(handle);
 
         int Result = ReadFile 
             (handle, 
-            &byte, 
-            len, 
+			byte,
+			len,
             &numberOfByteRead,
-            (LPOVERLAPPED) &HIDOverlapped);
-    }
+			&HIDOverlapped);
 
+		if (GetLastError() == ERROR_IO_PENDING)
+		{
+			WaitForSingleObject(handle, INFINITE);
+			GetOverlappedResult(handle, &HIDOverlapped, &numberOfByteRead, FALSE);
+		}
+    }
     return numberOfByteRead;
 }
 
 USBHIDDLL_API int __stdcall USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int len)
 {
-    DWORD numberOfBytesWriten;
+    DWORD numberOfBytesWriten =0;
 
+	int errorno;
     if (handle != INVALID_HANDLE_VALUE)
     {
-        CancelIo(handle);
+		CancelIo(handle);
 
         if( GlobalType == T_Feature )
         {
@@ -142,10 +148,17 @@ USBHIDDLL_API int __stdcall USBHIDWriteByte(USBHANDLE handle, BYTE* byte, int le
         {
             WriteFile 
                 (handle, 
-                &byte, 
+                byte, 
                 len, 
                 &numberOfBytesWriten,
-                (LPOVERLAPPED) &HIDOverlapped);
+				&HIDOverlapped);
+
+			if (GetLastError() == ERROR_IO_PENDING)
+			{
+				WaitForSingleObject(handle, INFINITE);
+				GetOverlappedResult(handle, &HIDOverlapped, &numberOfBytesWriten, FALSE);
+				errorno = GetLastError();
+			}
         }
     }
     return numberOfBytesWriten;
@@ -156,8 +169,8 @@ USBHIDDLL_API void __stdcall USBHIDCloseHandle(USBHANDLE handle)
     if (handle != INVALID_HANDLE_VALUE)
     {
         CloseHandle(handle);
-        handle = INVALID_HANDLE_VALUE;
-        memset(GlobalUSBHIDDevicePath, '\0', sizeof(GlobalUSBHIDDevicePath));
+        handle = NULL;
+       // memset(GlobalUSBHIDDevicePath, '\0', sizeof(GlobalUSBHIDDevicePath));
     }
 }
 

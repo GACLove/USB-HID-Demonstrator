@@ -20,7 +20,12 @@ public:
 
     USBHANDLE handle;
 
+    HIDP_CAPS caps;
+
     BYTE* fileData;
+
+	bool isWrite;
+
     int fileLen;
 // 实现
 protected:
@@ -39,7 +44,6 @@ public:
     CButton m_wndReport;
     CStatic m_wndDeviceName;
     CStatic m_wndRead;                                         // 读取到数据
-    afx_msg void OnBnClickedGetCaps();
     afx_msg void OnBnClickedOpen();
     afx_msg void OnBnClickedSetReport();
     afx_msg void OnBnClickedSetFeature();
@@ -48,4 +52,8 @@ public:
     CStatic m_wndFileStatus;
     afx_msg void OnBnClickedButtonWritedata();
     afx_msg void OnBnClickedButtonTestread();
+    HANDLE hThread;
+    void TestReadProc();
+    virtual BOOL DestroyWindow();
+    CStatic m_openlog;
 };

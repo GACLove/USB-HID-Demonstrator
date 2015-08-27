@@ -6,10 +6,22 @@
 #include "UsbHidDemo.h"
 #include "UsbHidDemoDlg.h"
 #include "afxdialogex.h"
+#include "UsbHidDll.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+
+
+DWORD WINAPI TreadProc(LPVOID lpThreadParameter)
+{
+    // 开启读的线程
+    CUsbHidDemoDlg* dlg = (CUsbHidDemoDlg*)lpThreadParameter;
+    while(1)
+    {
+		dlg->TestReadProc();
+    }
+}
 
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
@@ -64,6 +76,7 @@ void CUsbHidDemoDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_STATIC_READ, m_wndRead);
     DDX_Control(pDX, IDC_EDIT_FILEPATH, m_wndFilePath);
     DDX_Control(pDX, IDC_STATIC_STATUS, m_wndFileStatus);
+    DDX_Control(pDX, IDC_STATIC_LOG, m_openlog);
 }
 
 BEGIN_MESSAGE_MAP(CUsbHidDemoDlg, CDialogEx)
@@ -72,7 +85,6 @@ BEGIN_MESSAGE_MAP(CUsbHidDemoDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
     ON_BN_CLICKED(IDC_BUTTON2, &CUsbHidDemoDlg::OnBnClickedWriteByte)
     ON_BN_CLICKED(IDC_BUTTON1, &CUsbHidDemoDlg::OnBnClickedReFresh)
-    ON_BN_CLICKED(IDC_BUTTON3, &CUsbHidDemoDlg::OnBnClickedGetCaps)
     ON_BN_CLICKED(IDC_BUTTON4, &CUsbHidDemoDlg::OnBnClickedOpen)
     ON_BN_CLICKED(IDC_RADIO1, &CUsbHidDemoDlg::OnBnClickedSetReport)
     ON_BN_CLICKED(IDC_RADIO2, &CUsbHidDemoDlg::OnBnClickedSetFeature)
@@ -121,8 +133,13 @@ BOOL CUsbHidDemoDlg::OnInitDialog()
         CString deviceName = USBHIDGetDeviceName();
         m_wndDeviceName.SetWindowText(deviceName);
     }
-    
+
+	isWrite = false;
+
     fileData = NULL;
+
+    handle = NULL;
+    hThread = CreateThread(NULL, 0, TreadProc, this, 0, NULL);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -189,25 +206,39 @@ void CUsbHidDemoDlg::OnBnClickedWriteByte()
     BYTE* buffer = new BYTE[len];
 
     // 转换到16进制
-    int index = 0;
-    for (int i = 0; i < tmp.GetLength();i++)
+	int index = 0; 
+	char* token = strtok(tmp.GetBuffer(0), " ");
+	char* token2;
+	while (token)
+	{
+		buffer[index] = strtol(token, &token2, 16);
+		token = strtok(NULL, " ");
+		index++;
+	}
+
+	isWrite = true;
+
+    BYTE* tmpBuf = buffer;
+
+    // 循环写入
+    while (index > caps.OutputReportByteLength)
     {
-        if (pBuffer[i] >= '0' && pBuffer[i] <='9')
-        {
-            buffer[index] = pBuffer[i] - '0';
-        }
-        else if (pBuffer[i] >= 'a' && pBuffer[i] <='f')
-        {
-            buffer[index] = pBuffer[i] - 'a' + 10;
-        }
-        else
-        {
-            continue;
-        }
-        index++;
+        // 根据设备能力写
+        USBHIDWriteByte(handle, tmpBuf, caps.OutputReportByteLength);
+        
+        // 剩余的内容
+        index -= caps.OutputReportByteLength;
+        
+        // 跳过已经写的
+        tmpBuf += caps.OutputReportByteLength;
     }
 
-    int writtedNum = USBHIDWriteByte(handle, buffer, index);
+    if (index > 0)
+    {
+        USBHIDWriteByte(handle, tmpBuf, index);
+    }
+   
+	isWrite = false;
 
     delete [] buffer;
 }
@@ -223,26 +254,31 @@ void CUsbHidDemoDlg::OnBnClickedReFresh()
     }
 }
 
-
-void CUsbHidDemoDlg::OnBnClickedGetCaps()
-{
-    HIDD_ATTRIBUTES attributes;
-    HIDP_CAPS caps;
-    USBHIDGetDeviceCapabilities(handle, &attributes, &caps);
-}
-
-
+// 00 fd 01 00 a0 c0 01 02 00 00 00 00 66 fe
 void CUsbHidDemoDlg::OnBnClickedOpen()
 {
-    handle = USBHIDCreateUsbHid();
-   if (NULL == handle)
-   {
-       MessageBox("打开USB设备失败,请确认设备是否连接.");
-   }
-   else
-   {
-        MessageBox("打开成功，请继续");
-   }
+    // 如果已经打开，则关闭
+    if (handle)
+    {
+        USBHIDCloseHandle(handle);
+        handle = NULL;
+        ((CButton*)GetDlgItem(IDC_BUTTON4))->SetWindowTextA("Open");
+    }
+    else
+    {
+        handle = USBHIDCreateUsbHid();
+        if (NULL == handle)
+        {
+            ((CButton*)GetDlgItem(IDC_BUTTON4))->SetWindowTextA("Open");
+        }
+        else
+        {
+            ((CButton*)GetDlgItem(IDC_BUTTON4))->SetWindowTextA("Close");
+            HIDD_ATTRIBUTES attributes;
+            // 获取设备能力
+            USBHIDGetDeviceCapabilities(handle, &attributes, &caps);
+        }
+    }
 }
 
 
@@ -262,6 +298,10 @@ void CUsbHidDemoDlg::OnBnClickedSetFeature()
 
 void CUsbHidDemoDlg::OnBnClickedButtonOpenfile()
 {
+    BYTE file1Data[2] ={1, 0};
+    FILE* fp = fopen("D:\\test.bin", "wb");
+    fwrite(file1Data,1,2,fp);
+    fclose(fp);
    CString filePathName;
    CFileDialog dlg(TRUE, 
        NULL, 
@@ -313,33 +353,93 @@ void CUsbHidDemoDlg::OnBnClickedButtonOpenfile()
 
 void CUsbHidDemoDlg::OnBnClickedButtonWritedata()
 {
-   if (handle)
-   {
-       USBHIDWriteByte(handle, fileData, fileLen);
-   }
-   else
-   {
-        m_wndFileStatus.SetWindowText(_T("{Please check usb device is connected."));        
-   }
+    if (handle)
+    {
+        BYTE* tmpbuf = fileData;
+        // 循环写入
+        while (fileLen > caps.OutputReportByteLength)
+        {
+            // 根据设备能力写
+            USBHIDWriteByte(handle, tmpbuf, caps.OutputReportByteLength);
+
+            // 剩余的内容
+            fileLen -= caps.OutputReportByteLength;
+
+            // 跳过已经写的
+            tmpbuf += caps.OutputReportByteLength;
+        }
+
+        if (fileLen > 0)
+        {
+            USBHIDWriteByte(handle, tmpbuf, fileLen);
+        }
+    }
+    delete [] fileData;
 }
 
+void CUsbHidDemoDlg::TestReadProc()
+{
+    if (handle)
+    {
+		if (isWrite)
+		{
+			Sleep(50);
+		}
+		else
+		{
+			BYTE tmpData[30];
+			memset(tmpData, '\0', 30);
+			// BYTE tmpData[10] = {1, 2, 3, 4, 5};
+			int len = USBHIDReadByte(handle, tmpData, 30);
 
+			int kk = 0;
+			char tmp[1024];
+			memset(tmp, '\0', 1024);
+
+			if (len <= 0)
+			{
+				Sleep(50);
+				return;
+			}
+			CString text;
+			for (int i = 0; i < len; i++)
+			{
+				sprintf(tmp, "%02x ", tmpData[i]);  // 以16进制显示
+				text += tmp;
+			}
+			m_wndRead.SetWindowText(text);
+		}
+    }
+}
 void CUsbHidDemoDlg::OnBnClickedButtonTestread()
 {
    if (handle)
    {
-      // BYTE tmpData[10];
-       BYTE tmpData[10] = {1, 2, 3, 4, 5};
-       int len = USBHIDReadByte(handle, tmpData, 10);
-       char tmp[10];
-      
+       BYTE tmpData[18];
+	   memset(tmpData, 0, 18);
+      // BYTE tmpData[10] = {1, 2, 3, 4, 5};
+       int len = USBHIDReadByte(handle, tmpData, 18);
+       char tmp[18];
+	   memset(tmp, '\0', 18);
+
        CString text;
        for (int i = 0; i < len; i++)
        {
-            memset(tmp, '\0', 10);
-           sprintf(tmp, "0x%02x ", tmpData[i]);
+           sprintf(tmp, "0x%02x ", tmpData[i]);  // 以16进制显示
            text += tmp;
        }
        m_wndRead.SetWindowText(text);
    }
+}
+
+
+BOOL CUsbHidDemoDlg::DestroyWindow()
+{
+    // TODO: 在此添加专用代码和/或调用基类
+    USBHIDCloseHandle(handle);
+    if (hThread)
+    {
+        CloseHandle(hThread);
+    }
+    return CDialogEx::DestroyWindow();
 }

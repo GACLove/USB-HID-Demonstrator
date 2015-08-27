@@ -1,3 +1,5 @@
+#ifndef USBHIDDLL_H
+#define USBHIDDLL_H
 // 下列 ifdef 块是创建使从 DLL 导出更简单的
 // 宏的标准方法。此 DLL 中的所有文件都是用命令行上定义的 USBHIDDLL_EXPORTS
 // 符号编译的。在使用此 DLL 的
@@ -11,9 +13,6 @@
 #endif
 
 #include "hidsdi++.h"
-//#include "hid.h"
-//#include "setupapi.h"
-//#include "usb100.h"
 
 #define USBHANDLE void* 
 
@@ -28,7 +27,7 @@ enum USBHIDTYPE
     T_Feature,
 };
 /************************************************************************/
-/*                     用于查找设备和识别设备的API                           */
+/*                     用于查找设备和识别设备的API                          */
 /************************************************************************/
 //查找设备 如果找到则返回true，否则返回false
 USBHIDDLL_API bool __stdcall USBHIDFindUSBHIDDevice();
@@ -71,4 +70,6 @@ USBHIDDLL_API void __stdcall USBHIDCloseHandle(USBHANDLE handle);
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
