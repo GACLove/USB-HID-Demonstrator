@@ -51,7 +51,6 @@ public:
     afx_msg void OnBnClickedButtonOpenfile();
     CStatic m_wndFileStatus;
     afx_msg void OnBnClickedButtonWritedata();
-    afx_msg void OnBnClickedButtonTestread();
     HANDLE hThread;
     void TestReadProc();
     virtual BOOL DestroyWindow();

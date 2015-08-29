@@ -90,7 +90,6 @@ BEGIN_MESSAGE_MAP(CUsbHidDemoDlg, CDialogEx)
     ON_BN_CLICKED(IDC_RADIO2, &CUsbHidDemoDlg::OnBnClickedSetFeature)
     ON_BN_CLICKED(IDC_BUTTON_OPENFILE, &CUsbHidDemoDlg::OnBnClickedButtonOpenfile)
     ON_BN_CLICKED(IDC_BUTTON_WRITEDATA, &CUsbHidDemoDlg::OnBnClickedButtonWritedata)
-    ON_BN_CLICKED(IDC_BUTTON_TESTREAD, &CUsbHidDemoDlg::OnBnClickedButtonTestread)
 END_MESSAGE_MAP()
 
 
@@ -411,27 +410,6 @@ void CUsbHidDemoDlg::TestReadProc()
 		}
     }
 }
-void CUsbHidDemoDlg::OnBnClickedButtonTestread()
-{
-   if (handle)
-   {
-       BYTE tmpData[18];
-	   memset(tmpData, 0, 18);
-      // BYTE tmpData[10] = {1, 2, 3, 4, 5};
-       int len = USBHIDReadByte(handle, tmpData, 18);
-       char tmp[18];
-	   memset(tmp, '\0', 18);
-
-       CString text;
-       for (int i = 0; i < len; i++)
-       {
-           sprintf(tmp, "0x%02x ", tmpData[i]);  // 以16进制显示
-           text += tmp;
-       }
-       m_wndRead.SetWindowText(text);
-   }
-}
-
 
 BOOL CUsbHidDemoDlg::DestroyWindow()
 {
